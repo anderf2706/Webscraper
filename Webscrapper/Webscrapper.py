@@ -8,5 +8,5 @@ src = result.content
 print(src)
 
 soup = BeautifulSoup(src, "html.parser")
-tweet = soup.findAll('p', attrs={"class": "content"})
-print(tweet)
+for tweet in soup.findAll('p', attrs={"class": "content"}):
+    print(tweet.text.encode('UTF-8'))
