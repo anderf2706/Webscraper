@@ -9,4 +9,3 @@ print(result.headers)
 src = result.content
 print(src)
 
-print("wwwwow, we did it chichi")
