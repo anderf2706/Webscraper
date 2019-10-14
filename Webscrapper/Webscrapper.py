@@ -10,3 +10,4 @@ print(src)
 soup = BeautifulSoup(src, "html.parser")
 for tweet in soup.findAll('p', attrs={"class": "content"}):
     print(tweet.text.encode('UTF-8'))
+    dhe
