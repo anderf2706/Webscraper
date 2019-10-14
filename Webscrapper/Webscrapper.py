@@ -6,7 +6,3 @@ print(result.status_code)
 print(result.headers)
 src = result.content
 print(src)
-tgag
-
-g
-eg
