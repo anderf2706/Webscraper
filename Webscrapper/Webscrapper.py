@@ -8,7 +8,6 @@ print(result.status_code)
 print(result.headers)
 src = result.content
 print(src)
-szrhd
-hasattr(zrh
-        frozensetz
-chr(result))
+
+print("we are at scuu")
+
