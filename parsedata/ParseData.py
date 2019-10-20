@@ -1,6 +1,8 @@
 import json
-with open("twitterData.json") as json_data:
+with open("C:/Users/Anders Fredriksen/PycharmProjects/Webscrapper/Webscrapper/twitterData.json") as json_data:
     jsonData = json.load(json_data)
 
 for i in jsonData:
-    print(i["date"])
+    if "31/07/2014" in i["date"]:
+        print(i["date"])
+
