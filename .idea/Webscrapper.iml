@@ -8,6 +8,7 @@
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="module" module-name="AI" />
     <orderEntry type="module" module-name="Auto" />
+    <orderEntry type="module" module-name="Reddit_Webscraper" />
   </component>
   <component name="TestRunnerService">
     <option name="PROJECT_TEST_RUNNER" value="Unittests" />
