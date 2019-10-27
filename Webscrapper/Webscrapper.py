@@ -29,9 +29,10 @@ result_new = requests.get("https://www.proff.no" + dummiestrings)
 driver = webdriver.Chrome()
 driver.get("https://www.proff.no" + dummiestrings)
 
+"""""
 
 with open("twitterData.json", "w") as outfile:
     json.dump(tweetArr, outfile)
 
 print("done")
-
+"""
