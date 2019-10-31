@@ -9,6 +9,7 @@
     <orderEntry type="module" module-name="AI" />
     <orderEntry type="module" module-name="Auto" />
     <orderEntry type="module" module-name="Reddit_Webscraper" />
+    <orderEntry type="module" module-name="Div" />
   </component>
   <component name="TestRunnerService">
     <option name="PROJECT_TEST_RUNNER" value="Unittests" />

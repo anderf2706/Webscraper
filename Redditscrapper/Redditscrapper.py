@@ -11,6 +11,6 @@ reddit = praw.Reddit(client_id='ZMYsLBXNwHSteQ',
 
 subreddit = reddit.subreddit('stocks')
 
-top_subreddit = subreddit.hot(limit=10)
+top_subreddit = subreddit.new(limit=10)
 for post in top_subreddit:
     print(post.title, "   :   ",post.id)
