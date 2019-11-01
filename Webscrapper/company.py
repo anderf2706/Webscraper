@@ -5,6 +5,9 @@ from selenium import webdriver
 import time
 from Redditscrapper import Redditscrapper
 
+companylist = []
+
+
 def get_to_side(selskaplist):
     global selskap
     selskap = input("selskap:")
@@ -15,8 +18,8 @@ def get_to_side(selskaplist):
             selskap = selskap.replace(" ", "%20")
 
     result = requests.get("https://www.proff.no/bransjes%C3%B8k?q=" + selskap)
-    #print(result.status_code)
-    #print(result.headers)
+    # print(result.status_code)
+    # print(result.headers)
     src = result.content
 
     content = BeautifulSoup(src, "html.parser")
@@ -38,6 +41,7 @@ driver = webdriver.Chrome()
 driver.get(get_to_side())
 """
 
+
 def write_keyvalues():
     from Webscrapper import Keyvalues
     from importlib import reload
@@ -53,28 +57,31 @@ def write_keyvalues():
 
     print("done")
 
+
 class Company(object):
     def __init__(self, company):
-        self.company = company
+        self.company = str(company)
         result_nokkeltall = requests.get(get_to_side(self.company))
         src_nokkeltall = result_nokkeltall.content
         global content_nokkel
         content_nokkel = BeautifulSoup(src_nokkeltall, "html.parser")
+
     def generate_keyvalues(self):
         write_keyvalues()
 
     def gather_redditdata(self, reddittype):
+        Redditscrapper.gather_data(self.company)
 
 
+# main
+# result_nokkeltall = requests.get(get_to_side(None))
+# src_nokkeltall = result_nokkeltall.content
+# content_nokkel = BeautifulSoup(src_nokkeltall, "html.parser")
+# write_keyvalues()
 
-#main
-#result_nokkeltall = requests.get(get_to_side(None))
-#src_nokkeltall = result_nokkeltall.content
-#content_nokkel = BeautifulSoup(src_nokkeltall, "html.parser")
-#write_keyvalues()
+def generate_keyvalues_forlist():
+    for company in companylist:
+        company.generate_keyvalues()
 
-equinor = Company('Equinor')
-print(equinor.company)
-equinor.generate_keyvalues()
-
-
+companylist.append(Company('equinor'))
+print(companylist[0])

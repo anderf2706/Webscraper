@@ -3,7 +3,7 @@ import pandas as pd
 import praw
 import datetime as dt
 
-def gather_data(amount):
+def gather_data(company, amount):
     reddit = praw.Reddit(client_id='ZMYsLBXNwHSteQ',
                          client_secret='7ylJljQjBWxgZThkDp_dtW194pE',
                          user_agent='scraper',
@@ -12,6 +12,6 @@ def gather_data(amount):
 
     subreddit = reddit.subreddit('stocks')
 
-    subreddits= subreddit.search(,limit=amount)
+    subreddits = subreddit.hot()
     for post in subreddits:
         print(post.title, "   :   ", post.id)
