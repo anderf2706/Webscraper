@@ -14,12 +14,11 @@ class Company(object):
         from importlib import reload
         reload(Keyvalues)
         self.company = str(company)
-        result_nokkeltall = requests.get(Keyvalues.get_to_side(self.company))
-        src_nokkeltall = result_nokkeltall.content
-        global content_nokkel
-        content_nokkel = BeautifulSoup(src_nokkeltall, "html.parser")
 
     def generate_keyvalues(self):
+        Keyvalues.generate_content_nokkel(self.company)
+
+        #if x is not None:
         Keyvalues.write_keyvalues()
 
     def gather_redditdata(self, reddittype):
