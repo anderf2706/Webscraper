@@ -15,17 +15,32 @@ def generate_content_nokkel(company):
         print('no key values available')
 
 
-def get_Totalrentabilitet():
+def gather_all():
+    indexes = ['D(tbr) fi-row Bgc($hoverBgColor):h',
+               ]
+    
+    for i in 1:len(indexes)
     ar = 2018
     totalrentabilitet = {}
+    i = 0
     for element in content_nokkel.find('div', attrs={'class': 'D(tbr) fi-row Bgc($hoverBgColor):h'}):
+        nameofvalue = str
         for first_block in element:
             for value in first_block:
-                print(value)
+                if i == 0:
+                    first = str(value).split('>')[1]
+                    nameofvalue = first.split('<')[0]
+                    print(nameofvalue)
+                    i = 1
+                else:
+                    print(str(value))
 
 
 
 
-generate_content_nokkel('NHY.OL')
-get_Totalrentabilitet()
+
+
+
+generate_content_nokkel('AAPL')
+gather_all()
 
