@@ -14,11 +14,11 @@ class Company(object):
         from importlib import reload
         reload(Keyvalues)
         self.company = str(company)
+    def get_name(self):
+        return self.company
 
     def generate_keyvalues(self):
         Keyvalues.generate_content_nokkel(self.company)
-
-        #if x is not None:
         Keyvalues.write_keyvalues()
 
     def gather_redditdata(self, reddittype):

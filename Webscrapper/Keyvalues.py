@@ -52,7 +52,8 @@ def write_keyvalues():
                   'Likviditetsgrad': get_Likviditetsgrad(),
                   'Egenkapitalandel': get_Egenkapitalandel(), 'Gjeldsgrad': get_Gjeldsgrad()}
     selskapforjson = selskap.replace("%20", " ")
-    with open(selskapforjson + "_keyvalues.json", "w") as outfile:
+    with open("C:/Users/Anders Fredriksen/PycharmProjects/Webscrapper/Keyvalues/" + selskapforjson +
+              "_keyvalues.json", "w") as outfile:
         json.dump(keyvaldict, outfile)
 
 
