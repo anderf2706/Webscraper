@@ -15,41 +15,18 @@ def generate_content_nokkel(company):
     except:
         print('no key values available')
 
+
 def make_lists():
-    lists = []
-    Basic = {}
-    Deluted = {}
-    Total_revenue = {}
-    Cost_of_revenue = {}
-    Gross_profit = {}
-    Research_development = {}
-    Selling_general_Administrativ = {}
-    Total_operating_expenses = {}
-    Operating_income_or_loss = {}
-    Interest_expenses = {}
-    Total_other_income_or_expenses_net = {}
-    Income_before_tax = {}
-    Income_tax_expenses = {}
-    Income_from_Continuing_Operations = {}
-    lists.append(Basic)
-    lists.append(Deluted)
-    lists.append(Total_revenue)
-    lists.append(Cost_of_revenue)
-    lists.append(Gross_profit)
-    lists.append(Research_development)
-    lists.append(Selling_general_Administrativ)
-    lists.append(Total_operating_expenses)
-    lists.append(Operating_income_or_loss)
-    lists.append(Interest_expenses)
-    lists.append(Total_other_income_or_expenses_net)
-    lists.append(Income_before_tax)
-    lists.append(Income_tax_expenses)
-    lists.append(Income_from_Continuing_Operations)
+    lists = {'Basic': {}, 'Deluted': {}, 'Total_Revenue': {}, 'Cost_of_Revenue': {}, 'Gross_Profit': {},
+             'Research_Development': {}, 'Selling_General_and_Administrative': {},
+             'Total_Operating_Expenses': {}, 'Operating_Income_or_Loss': {}, 'Interest_Expense': {},
+             'Total_Other_Income/Expenses_Net': {}, 'Income_Before_Tax': {},
+             'Income_Tax_Expense': {}, 'Income_from_Continuing_Operations': {},
+             'Net_Income': {}, 'Net_Income_available_to_common_shareholders': {}}
     return lists
 
 
 def gather_all():
-
     list_of_dict = make_lists()
     print(list_of_dict)
     indexes = ['D(tbr) fi-row Bgc($hoverBgColor):h',
@@ -61,57 +38,57 @@ def gather_all():
             nameofvalue = str
             for first_block in element:
                 for value in first_block:
+
                     valuestr = str(value)
                     ar = 2018
                     i = 0
-                    if not(valuestr.__contains__("div") or valuestr.__contains__("span")) and i < 6:
-                        print(value)
-                        #valuestr.replace(".", ",")
-                        #try:
-                        #    Basic[ar] = float(value)
-                        #except ValueError:
-                        #    Basic[ar] = None
-                        #i += 1
-                        #ar -= 1
-                    if not(valuestr.__contains__("div") or valuestr.__contains__("span")) and i > 6:
-                        print(value)
-                        #valuestr.replace(".", ",")
-                        #try:
-                        #    Deluted[ar] = float(value)
-                        #except ValueError:
-                        #    Deluted[ar] = None
-                        #i += 1
-                        #ar -= 1
 
                     for last2 in value:
                         last2 = str(last2)
                         if last2.__contains__('span'):
                             first = str(last2).split('>')[1]
                             nameofvalue = first.split('<')[0]
+                            if nameofvalue == 'Operating Expenses' or nameofvalue == 'Reported EPS':
+                                continue
                             print("navn " + nameofvalue)
-                        if not last2.__contains__('button') and not last2.__contains__('span')\
+                        if not last2.__contains__('button') and not last2.__contains__('span') \
                                 and not nameofvalue == 'Basic' and not nameofvalue == 'Diluted':
                             number = last2.replace(',', '')
                             print("number", number)
-                            for dict in list_of_dict:
-                                nametosearch = nameofvalue.replace(' ', '_')
-                                #if nametosearch == dict
-                        #if nameofvalue == 'Basic' or nameofvalue == 'Diluted':
+                            nametosearch = nameofvalue.replace(' ', '_')
+                            #list_of_dict[nametosearch][ar] = number
 
+                                # if nametosearch == dict
+                        # if nameofvalue == 'Basic' or nameofvalue == 'Diluted':
 
+                    if not (valuestr.__contains__("div") or valuestr.__contains__("span")) and i < 6:
+                        print('test', value)
+                        # valuestr.replace(".", ",")
+                        # try:
+                        #    Basic[ar] = float(value)
+                        # except ValueError:
+                        #    Basic[ar] = None
+                        # i += 1
+                        # ar -= 1
+                    if not (valuestr.__contains__("div") or valuestr.__contains__("span")) and i > 6:
+                        print('test', value)
+                        # valuestr.replace(".", ",")
+                        # try:
+                        #    Deluted[ar] = float(value)
+                        # except ValueError:
+                        #    Deluted[ar] = None
+                        # i += 1
+                        # ar -= 1
 
-
-
-                    #if i == 0:
-                     #   first = str(value).split('>')[1]
-                      #  nameofvalue = first.split('<')[0]
-                       # print(nameofvalue)
-                        #i = 1
-                    #else:
-                    #print(str(value))
-                    #print("hqllq")
+                    # if i == 0:
+                    #   first = str(value).split('>')[1]
+                    #  nameofvalue = first.split('<')[0]
+                    # print(nameofvalue)
+                    # i = 1
+                    # else:
+                    # print(str(value))
+                    # print("hqllq")
 
 
 generate_content_nokkel('AAPL')
 gather_all()
-
