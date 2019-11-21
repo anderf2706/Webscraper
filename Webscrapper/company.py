@@ -5,8 +5,6 @@ import time
 from Redditscrapper import Redditscrapper
 from Webscrapper import keyvalues
 
-companylist = []
-
 
 class Company(object):
     def __init__(self, company, yahooticker):
@@ -15,15 +13,16 @@ class Company(object):
         reload(OLD_Keyvalues)
         self.company = str(company)
         self.ticker = str(yahooticker)
+
     def get_name(self):
         return self.company
 
-    def generate_keyvalues(self):
-        keyvalues.generate_content_nokkel(self.ticker)
-        keyvalues.write_keyvalues()
+    def get_ticker(self):
+        return self.ticker
 
-    def gather_redditdata(self, reddittype):
-        Redditscrapper.gather_data(self.company)
+    def generate_keyvalues(self):
+        keyvalues.write_keyvalues(self.get_name(), self.get_ticker())
+
 
 
 

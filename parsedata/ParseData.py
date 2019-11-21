@@ -1,7 +1,6 @@
 import json
 import company
 import pandas as pd
-import matplotlib.pyplot as plt
 
 def convert_to_json(name):
     with open("C:/Users/Anders Fredriksen/PycharmProjects/Webscrapper/Webscrapper/" + name + "_keyvalues.json") as json_data:
