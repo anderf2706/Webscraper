@@ -28,5 +28,5 @@ def clear_keyvalues_folder():
 
 companylist.append(Company('Amazon', 'AMZN'))
 
-#generate_keyvalues_forlist()
-clear_keyvalues_folder()
+generate_keyvalues_forlist()
+#clear_keyvalues_folder()

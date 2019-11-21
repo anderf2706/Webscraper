@@ -85,7 +85,7 @@ def write_keyvalues(name, yahooticker):
     project_root = get_project_root().name
     keyvaldict = gather_all(yahooticker)
     selskapforjson = name
-    with open("Keyvalues/" + selskapforjson +
+    with open("Companies/" + selskapforjson + "/" + selskapforjson +
               "_keyvalues.json", "w") as outfile:
         json.dump(keyvaldict, outfile)
 
