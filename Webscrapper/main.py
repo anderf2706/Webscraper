@@ -5,6 +5,10 @@ from pathlib import Path
 companylist = []
 
 
+def add(Name):
+    companylist.append(Company(Name))
+
+
 def get_project_root() -> Path:
     return Path(__file__).parent.parent
 
@@ -26,7 +30,12 @@ def clear_keyvalues_folder():
     print("deleted " + str(i) + " elements")
 
 
-companylist.append(Company('Amazon', 'AMZN'))
+add('Amazon')
+add('NorskHydro')
+add('Equinor')
+add('Microsoft')
+
+
 
 generate_keyvalues_forlist()
 #clear_keyvalues_folder()

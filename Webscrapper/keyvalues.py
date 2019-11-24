@@ -69,9 +69,10 @@ def gather_all(company):
                         else:
                             basicvalue = float(valuestr)
                         print('test', basicvalue, nameofvalue)
+                        nametosearch = nameofvalue.replace(' ', '_')
                         if ar < 2015:
                             ar = 2019
-                        list_of_dict[nameofvalue][ar] = basicvalue
+                        list_of_dict[nametosearch][ar] = basicvalue
                         i += 1
                         ar -= 1
     return list_of_dict
@@ -82,7 +83,6 @@ def get_project_root() -> Path:
 
 
 def write_keyvalues(name, yahooticker):
-    project_root = get_project_root().name
     keyvaldict = gather_all(yahooticker)
     selskapforjson = name
     with open("Companies/" + selskapforjson + "/" + selskapforjson +
