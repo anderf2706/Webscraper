@@ -1,41 +1,54 @@
 from company import Company
 import os
 from pathlib import Path
+import shutil
 
+namelist = []
 companylist = []
 
 
-def add(Name):
-    companylist.append(Company(Name))
+def add(*names):
+    for x in names:
+        namelist.append(str(x))
 
 
 def get_project_root() -> Path:
     return Path(__file__).parent.parent
 
 
-def generate_keyvalues_forlist():
-    clear_keyvalues_folder()
-    for element in companylist:
-        element.generate_keyvalues()
+def generate_keyvalues_forlist(delete_previous, generate_keyvalues):
+    if delete_previous:
+        clear_folder()
+        delete_folder()
+
+    if generate_keyvalues:
+        for name in namelist:
+            companylist.append(Company(name))
+        for element in companylist:
+            element.generate_keyvalues()
 
 
-def clear_keyvalues_folder():
+
+def clear_folder():
     i = 0
-    for element in companylist:
-        if os.path.exists("Keyvalues/" + element.get_name() +
-                          "_keyvalues.json"):
+    for element in namelist:
+        if os.path.exists("Companies/" + element +
+                          '/' + element + '_keyvalues.json'):
             i += 1
-            os.remove("Keyvalues/" + element.get_name() +
-                      "_keyvalues.json")
-    print("deleted " + str(i) + " elements")
+            os.remove("Companies/" + element +
+                      '/' + element + '_keyvalues.json')
+    print("deleted " + str(i) + " files")
 
 
-add('Amazon')
-add('NorskHydro')
-add('Equinor')
-add('Microsoft')
+def delete_folder():
+    i = 0
+    for element in namelist:
+        if os.path.exists("Companies/" + element):
+            shutil.rmtree('Companies/' + element, ignore_errors=True)
+            i += 1
+    print("deleted " + str(i) + " folders")
 
 
-
-generate_keyvalues_forlist()
-#clear_keyvalues_folder()
+add('Equinor', 'Microsoft', 'NorskHydro')
+generate_keyvalues_forlist(True, False)
+# clear_keyvalues_folder()
