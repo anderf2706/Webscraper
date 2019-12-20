@@ -28,7 +28,6 @@ def generate_keyvalues_forlist(delete_previous, generate_keyvalues):
             element.generate_keyvalues()
 
 
-
 def clear_folder():
     i = 0
     for element in namelist:
@@ -50,5 +49,5 @@ def delete_folder():
 
 
 add('Equinor', 'Microsoft', 'NorskHydro')
-generate_keyvalues_forlist(True, False)
+generate_keyvalues_forlist(True, True)
 # clear_keyvalues_folder()
