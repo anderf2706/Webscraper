@@ -16,6 +16,7 @@ class Company(object):
         self.company = str(company)
         self.ticker = self.generate_ticker()
         self.ensure_dir()
+        print()
 
     def ensure_dir(self):
         if not (os.path.exists('Companies/' + self.get_name())):
@@ -31,9 +32,10 @@ class Company(object):
 
             print(url)
             try:
-                url = url.split('=')[1]
-            except IndexError:
                 url = url.split('/')[4]
+            except IndexError:
+                url = url.split('=')[1]
+                url = url.split('&')[0]
                 print(url)
 
             break

@@ -7,7 +7,9 @@ def generate_content_nokkel(company):
     try:
         result_nokkeltall = requests.get("https://finance.yahoo.com/quote/"
                                          + str(company) + "/financials?p=" + str(company))
+        print(str(company))
         src_nokkeltall = result_nokkeltall.content
+
         return BeautifulSoup(src_nokkeltall, "html.parser")
     except:
         print('no key values available')
@@ -30,6 +32,7 @@ def gather_all(company):
     indexes = ['D(tbr) fi-row Bgc($hoverBgColor):h',
                ]
     content_nokkel = generate_content_nokkel(company)
+
     ar = 2019
     for i in range(0, len(indexes)):
         for element in content_nokkel.findAll('div', attrs={'class': 'D(tbr) fi-row Bgc($hoverBgColor):h'}):

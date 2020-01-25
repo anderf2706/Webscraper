@@ -51,4 +51,5 @@ def delete_folder():
 
 add('Equinor', 'Microsoft', 'NorskHydro')
 generate_keyvalues_forlist(True, False)
+
 # clear_keyvalues_folder()
